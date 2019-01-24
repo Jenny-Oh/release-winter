@@ -1,0 +1,25 @@
+#include<stdio.h>
+
+int main() {
+	int a,b,c,d;
+	int *pM, *pm;
+
+	printf("\n\nInput 4 integer :");
+	scanf("%d%d%d%d",&a,&b,&c,&d);
+	
+	if(a > b && a > c && a >d) pM = &a;
+	if(a < b && a <c && a< d) pm = &a;
+	if(b > a && b > c && b >d) pM = &b;
+	if(b < a && b <c && b< d) pm = &b;
+	if(c > b && c > a && c >d) pM = &c;
+	if(c < b && c <a && c< d) pm = &c;
+	if(d > b && d > c && d >a) pM = &d;
+	if(d < b && d <c && d< a) pm = &d;
+
+	printf("\n\nmaximum value is %d\n",*pM);
+	printf("%d is stored at address %p\n", *pM, pM);
+	printf("minimum value is %d\n", *pm);
+	printf("%d is stored at address %p\n", *pm, pm);
+
+	return 0;
+}
