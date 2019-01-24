@@ -1,0 +1,15 @@
+#include<stdio.h>
+
+int main() {
+	float a, b, c;
+	float *d, *e;
+
+	printf("\n\nInput m1 and m2 :");
+	scanf("%f%f", &a, &b);
+	d = &a;
+	e = &b;
+	c = (2*(*e)*(*d)*9.8) /(*e+*d);
+	printf("\n\nTorque = %f\n",c);
+
+	return 0;
+}
