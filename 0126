@@ -30,6 +30,6 @@ int main() {
 		c = *d / *e;
 	}
 	else c = 0;
-	printf("\n\nResult : %.2f", c);
+	printf("\n\n\nResult : %.2f", c);
 	return 0;
 }
