@@ -1,0 +1,99 @@
+        
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct node {
+	char command[10];
+	struct node* next;
+
+}QUEUE_NODE;
+
+typedef struct {
+	QUEUE_NODE* front;
+	int count;
+	QUEUE_NODE* rear;
+}QUEUE;
+
+int CheckCommand(char *command);
+void EnqueueCommand(QUEUE* pQueue, char * dataIn);
+int DequeuePrint(QUEUE* pQueue, char * dataOut);
+
+int main() {
+	char command[10];
+	char data[100];
+	int ckcom;
+	QUEUE* pQueue;
+	pQueue = (QUEUE*)malloc(sizeof(QUEUE));
+	pQueue->front = NULL;
+	pQueue->count = 0;
+	pQueue->rear = NULL;
+	int r = 0;
+	while (1) {
+		while (1) {
+			printf(">>");
+			scanf("%[^\n]s", command);
+			getchar();
+			if (strcmp(command ,"history")==0 || strcmp(command, "h") == 0) break;
+			else if (strcmp(command, "quit") == 0 || strcmp(command, "q") == 0) {
+				r = 1; break;
+			}
+			else {
+				ckcom = CheckCommand(command);
+				//printf("ckcom = %d\n", ckcom);
+				if (ckcom==1)
+					printf("%s\n",command);
+			}
+			if (ckcom == 1) {
+				EnqueueCommand(pQueue, command);
+			}
+		}
+		if (r==1) break;
+		while (1) {
+			if (DequeuePrint(pQueue, data) == 0) break;
+			printf("%s\n", data);
+		}
+	}
+	return 0;
+}
+
+int CheckCommand(char *command) {
+	int re;
+	if (strcmp(command  ,"help")==0) re= 1;
+	else if (strcmp(command ,"dir")==0) re= 1;
+	else if (strcmp(command ,"mkdir")==0) re=1;
+	else if (strcmp(command ,"cd")==0) re= 1;
+	else re= 0;
+	return re;
+}
+
+void EnqueueCommand(QUEUE* pQueue, char * dataIn) {
+	QUEUE_NODE* new;
+	if (!(new = (QUEUE_NODE*)malloc(sizeof(QUEUE_NODE))))
+		return;
+	strcpy(new->command, dataIn);
+	//new->next = NULL;
+	if (pQueue->count == 0)
+		pQueue->front = new;
+	else
+		pQueue->rear->next = new;
+	pQueue->count++;
+	pQueue->rear = new;
+	
+}
+
+int DequeuePrint(QUEUE* pQueue, char * dataOut) {
+	QUEUE_NODE * del;
+	
+	if (!pQueue->count) return 0;
+	strcpy(dataOut , pQueue->front->command);
+	del = pQueue->front;
+	if (pQueue->count == 1)
+		pQueue->rear = pQueue->front = NULL;
+	else
+		pQueue->front = pQueue->front->next;
+	pQueue->count--;
+	free(del);
+	return 1;
+}
+
+    
