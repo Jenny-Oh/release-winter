@@ -5,7 +5,6 @@
 typedef struct node {
 	char command[10];
 	struct node* next;
-
 }QUEUE_NODE;
 
 typedef struct {
