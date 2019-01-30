@@ -1,0 +1,40 @@
+        
+#include<stdio.h>
+void add_integer(int *Arr, int size);
+int main() {
+	int n=10;
+	int Arr[10] = { 1,11,23,35,47,59,67,75,83,95 };
+	add_integer(Arr, n);
+}
+void add_integer(int *Arr, int size) {
+	int n,ary[11];
+	int *pwalker = Arr;
+	int *plast = Arr + size - 1;
+	scanf("%d", &n);
+	int i = 0,j=0;
+	
+	
+	for (; pwalker <= plast; pwalker++) {
+		if (n >= *pwalker && n <= *(pwalker + 1)) {
+			//printf("%d %d\n", i, Arr[i]);
+			ary[i] = Arr[j];
+			ary[i + 1] = n;
+			i++;
+		}
+		else {
+			ary[i] = Arr[j];
+		}
+		j++;
+		i++;
+		//break;
+	}
+	
+	for (int i = 0; i < 10; i++) {
+		Arr[i] = ary[i];
+	}
+	for (int i = 0; i < 10; i++) {
+		printf("%d ",Arr[i]);
+	}
+}
+
+    
