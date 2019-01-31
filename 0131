@@ -13,7 +13,6 @@ void add_integer(int *Arr, int size) {
 	scanf("%d", &n);
 	int i = 0,j=0;
 	
-	
 	for (; pwalker <= plast; pwalker++) {
 		if (n >= *pwalker && n <= *(pwalker + 1)) {
 			//printf("%d %d\n", i, Arr[i]);
