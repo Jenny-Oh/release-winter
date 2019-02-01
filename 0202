@@ -1,0 +1,49 @@
+        
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+void multiple(int left[][5], int right[][5], int result[][5]);
+
+int main() {
+	int ar1[5][5], ar2[5][5], re[5][5] = {0};
+	srand(20181657);
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			*(*(ar1+i)+j) = rand() % 10;
+			*(*(ar2 + i) + j) = rand() % 10;
+		}
+	}
+	multiple(ar1, ar2,re);
+	for (int i = 0; i < 5; i++) {
+		for (int j = 0; j < 5; j++) {
+			printf("%3d ",*(*(ar1 + i) + j));
+		}
+		printf("     ");
+		for (int j = 0; j < 5; j++) {
+			printf("%3d ", *(*(ar2 + i) + j));
+		}
+		printf("     ");
+		for (int j = 0; j < 5; j++) {
+			printf("%3d ", *(*(re + i) + j));
+		}
+		printf("\n");
+	}
+}
+void multiple(int left[][5], int right[][5], int result[][5]) {
+	int i, j,k,h;
+	for (i = 0; i < 5; i++) {
+		for (j = 0; j < 5; j++) {
+			for (k = 0; k < 5; k++) {
+				*(*(result + i) + j) += (*(*(left + i) + k) * *(*(right + k) + j));
+				
+			}
+		}
+	}
+	/*for (i = 0; i < 5; i++) {
+		for (j = 0; j < 5; j++) {
+			printf("%3d ",*(*(result+i)+j));
+		}
+	}*/
+}
+
+    
