@@ -1,0 +1,66 @@
+        
+#include<stdio.h>
+#include<stdlib.h>
+char* str_concatenate(char* str1, char* str2);
+int main() {
+	int sz1, sz2;
+	char *str1, *str2, *str;
+	printf("Input size of str1 : ");
+	scanf("%d", &sz1);
+	getchar();
+	str1 = (char *)malloc(sizeof(char)*(sz1 + 1));
+	for (int i = 0; i < sz1; i++) {
+		scanf("%c", &str1[i]);
+	}
+	str1[sz1] = '\n';
+	printf("Input size of str2 : ");
+	scanf("%d", &sz2);
+	getchar();
+	str2 = (char *)malloc(sizeof(char)*(sz2 + 1));
+	for (int i = 0; i < sz2; i++) {
+		scanf("%c", &str2[i]);
+	}
+	str2[sz2] = '\n';
+
+	str = str_concatenate(str1, str2);
+
+	printf("%s", str);
+
+	return 0;
+}
+
+
+char* str_concatenate(char* str1, char* str2) {
+	int i = 0, j = 0;
+	char * str;
+
+	while (str1[i] != '\n') {
+		i++;
+	}
+	
+	while (str2[j] != '\n') {
+		j++;
+	}
+	
+	int size = i + j + 3;
+	str = (char *)malloc(sizeof(char)*size);
+	i = 0, j = 0;
+	while (str1[i] != '\n') {
+		str[i] = str1[i];
+		i++;
+	}
+	
+	str[i] = ' ';
+	i++;
+
+	while (str2[j] != '\n') {
+		str[i + j] = str2[j];
+		j++;
+	}
+	str[i + j] = '\n';
+	str[i + j + 1] = '\0';
+
+	return str;
+}
+
+    
