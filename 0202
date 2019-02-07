@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+
 void multiple(int left[][5], int right[][5], int result[][5]);
 int main() {
 	int ar1[5][5], ar2[5][5], re[5][5] = {0};
