@@ -4,7 +4,6 @@ int main() {
 
 	int a,b,c,d;
 	int *pM, *pm;
-
 	printf("\n\nInput 4 integer :");
 	scanf("%d%d%d%d",&a,&b,&c,&d);
 	
